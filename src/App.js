@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Header, Navbar, Profile } from './components';
 
-import './app.scss';
+import './styles/app.scss';
 
 function App() {
   return (

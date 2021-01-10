@@ -1,5 +1,7 @@
 import React from "react";
 
+// import "./Profile.scss";
+
 function Profile() {
   return (
     <div className="content">
@@ -13,8 +15,10 @@ function Profile() {
       <div>
         my posts
         <div>new post</div>
-        <div>1 post</div>
-        <div>2 post</div>
+        <div className="posts">
+          <div className="item">1 post</div>
+          <div className="item">2 post</div>
+        </div>
       </div>
     </div>
   );
