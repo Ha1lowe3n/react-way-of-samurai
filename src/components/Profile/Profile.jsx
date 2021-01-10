@@ -1,10 +1,12 @@
 import React from "react";
 
-// import "./Profile.scss";
+import classes from "./Profile.module.scss";
+
+import MyPosts from "./MyPosts/MyPosts";
 
 function Profile() {
   return (
-    <div className="content">
+    <div className={classes.content}>
       <div>
         <img
           src="https://img3.goodfon.ru/original/1920x1200/a/f0/pesok-plyazh-sledy-more-palmy.jpg"
@@ -12,14 +14,7 @@ function Profile() {
         />
       </div>
       <div>ava + descr</div>
-      <div>
-        my posts
-        <div>new post</div>
-        <div className="posts">
-          <div className="item">1 post</div>
-          <div className="item">2 post</div>
-        </div>
-      </div>
+      <MyPosts />
     </div>
   );
 }
