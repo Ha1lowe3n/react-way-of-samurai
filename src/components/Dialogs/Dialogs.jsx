@@ -3,28 +3,23 @@ import { NavLink } from "react-router-dom";
 
 import classes from "./Dialogs.module.scss";
 
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
+
 function Dialogs() {
   return (
     <div className={classes.dialogs}>
       <div className={classes.dialogs_items}>
-        <div className={`${classes.item} ${classes.active}`}>
-          <NavLink to="/dialogs/1">Andrey</NavLink>
-        </div>
-        <div className={classes.item}>
-          <NavLink to="/dialogs/2">Oleg</NavLink>
-        </div>
-        <div className={classes.item}>
-          <NavLink to="/dialogs/3">Sveta</NavLink>
-        </div>
-        <div className={classes.item}>
-          <NavLink to="/dialogs/4">Valera</NavLink>
-        </div>
+        <DialogItem name="Dima" id="1" />
+        <DialogItem name="Oleg" id="2" />
+        <DialogItem name="Sveta" id="3" />
+        <DialogItem name="Valera" id="4" />
       </div>
 
       <div className={classes.messages}>
-        <div className={classes.message}>Hi</div>
-        <div className={classes.message}>Yo</div>
-        <div className={classes.message}>What's up?</div>
+        <Message message="Hi" />
+        <Message message="Hello" />
+        <Message message="What's up?" />
       </div>
     </div>
   );

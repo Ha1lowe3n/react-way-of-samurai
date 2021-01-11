@@ -4,22 +4,9 @@
 
   &_items {
     padding: 10px;
-
-    .item {
-      a {
-        text-decoration: none;
-        color: white;
-      }
-
-      &.active {
-        color: gold;
-      }
-    }
   }
 
   .messages {
     padding: 10px;
-
-    .message {}
   }
 }
