@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, Navbar, Profile } from './components';
+import { Dialogs, Header, Navbar, Profile } from './components';
 
 import './app.scss';
 
@@ -9,7 +9,10 @@ function App() {
     <div className="app-wrapper">
       <Header />
       <Navbar />
-      <Profile />
+      <div className="app-wrapper--content">
+        <Profile />
+        <Dialogs />
+      </div>
     </div>
   );
 }
