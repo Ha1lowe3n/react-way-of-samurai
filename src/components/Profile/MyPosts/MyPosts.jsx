@@ -4,12 +4,7 @@ import classes from "./MyPosts.module.scss";
 
 import Post from "./Post/Post";
 
-const postsData = [
-  { id: 1, message: "Hello", likeCount: "9" },
-  { id: 2, message: "Hi", likeCount: "7" },
-];
-
-function MyPosts() {
+function MyPosts({ posts }) {
   return (
     <div className={classes.postsBlock}>
       <h3>My posts</h3>
@@ -20,7 +15,7 @@ function MyPosts() {
         <button>Add post</button>
       </div>
       <div className={classes.posts}>
-        {postsData.map((p) => (
+        {posts.map((p) => (
           <Post message={p.message} likeCount={p.likeCount} />
         ))}
       </div>
