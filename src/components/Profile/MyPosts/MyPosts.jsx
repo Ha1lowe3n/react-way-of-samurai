@@ -15,8 +15,8 @@ function MyPosts({ posts }) {
         <button>Add post</button>
       </div>
       <div className={classes.posts}>
-        {posts.map((p) => (
-          <Post message={p.message} likeCount={p.likeCount} />
+        {posts.map((p, i) => (
+          <Post key={`${p}_${i}`} message={p.message} likeCount={p.likeCount} />
         ))}
       </div>
     </div>
