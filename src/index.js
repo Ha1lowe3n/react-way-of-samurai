@@ -24,8 +24,6 @@ const postsData = [
   { id: 2, message: "Hi", likeCount: "7" },
 ];
 
-// hello
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
