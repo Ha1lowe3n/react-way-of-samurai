@@ -5,14 +5,21 @@ import classes from "./MyPosts.module.scss";
 import Post from "./Post/Post";
 
 function MyPosts({ posts }) {
+  const newPost = React.useRef();
+
+  const addPost = () => {
+    alert(newPost.current.value);
+    newPost.current.value = "";
+  };
+
   return (
     <div className={classes.postsBlock}>
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea></textarea>
+          <textarea ref={newPost}></textarea>
         </div>
-        <button>Add post</button>
+        <button onClick={addPost}>Add post</button>
       </div>
       <div className={classes.posts}>
         {posts.map((p, i) => (

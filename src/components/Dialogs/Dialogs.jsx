@@ -6,6 +6,12 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 function Dialogs({ dialogs, messages }) {
+  const newMessage = React.useRef();
+
+  const addMessage = () => {
+    alert(newMessage.current.value);
+  };
+
   return (
     <div className={classes.dialogs}>
       <div className={classes.dialogs_items}>
@@ -18,6 +24,11 @@ function Dialogs({ dialogs, messages }) {
         {messages.map((m) => (
           <Message message={m.message} />
         ))}
+
+        <div className={classes.textarea}>
+          <textarea ref={newMessage}></textarea>
+        </div>
+        <button onClick={addMessage}>Add</button>
       </div>
     </div>
   );

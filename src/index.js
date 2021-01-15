@@ -7,8 +7,6 @@ import './index.scss';
 import App from './App';
 import state from './redux/state';
 
-console.log(state)
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
