@@ -15,8 +15,8 @@ function Dialogs({ dialogs, messages }) {
   return (
     <div className={classes.dialogs}>
       <div className={classes.dialogs_items}>
-        {dialogs.map((d) => (
-          <DialogItem name={d.name} id={d.id} />
+        {dialogs.map((d, i) => (
+          <DialogItem key={`${d}_${i}`} name={d.name} id={d.id} />
         ))}
       </div>
 

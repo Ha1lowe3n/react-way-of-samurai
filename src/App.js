@@ -6,7 +6,7 @@ import { Dialogs, Header, Navbar, Profile, News, Music, Settings } from './compo
 import './app.scss';
 
 
-function App({ state: { profilePage, dialogsPage } }) {
+function App({ state: { profilePage, dialogsPage }, addPost }) {
 
   return (
     <div className="app-wrapper">
@@ -15,7 +15,12 @@ function App({ state: { profilePage, dialogsPage } }) {
       <div className="app-wrapper--content">
         <Route
           path="/profile"
-          render={() => <Profile posts={profilePage.postsData} />}
+          render={() =>
+            <Profile
+              posts={profilePage.postsData}
+              addPost={addPost}
+            />
+          }
         />
         <Route
           path="/dialogs"
