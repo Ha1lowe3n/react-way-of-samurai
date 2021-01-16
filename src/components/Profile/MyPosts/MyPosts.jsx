@@ -1,15 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import classes from "./MyPosts.module.scss";
+import classes from './MyPosts.module.scss';
 
-import Post from "./Post/Post";
+import Post from './Post/Post';
 
-function MyPosts({ posts, addPost }) {
+function MyPosts({ posts, addPost, newPostText, updateNewPostText }) {
   const newPost = React.useRef();
 
   const addNewPost = () => {
-    addPost(newPost.current.value);
-    newPost.current.value = "";
+    addPost();
+  };
+
+  const onPostChange = () => {
+    updateNewPostText(newPost.current.value);
   };
 
   return (
@@ -17,17 +20,13 @@ function MyPosts({ posts, addPost }) {
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea ref={newPost}></textarea>
+          <textarea ref={newPost} onChange={onPostChange} value={newPostText} />
         </div>
         <button onClick={addNewPost}>Add post</button>
       </div>
       <div className={classes.posts}>
         {posts.map((p, i) => (
-          <Post
-            key={`${p}_${i}`}
-            message={p.message}
-            likesCount={p.likesCount}
-          />
+          <Post key={`${p}_${i}`} message={p.message} likesCount={p.likesCount} />
         ))}
       </div>
     </div>

@@ -1,15 +1,20 @@
-import React from "react";
+import React from 'react';
 
-import classes from "./Profile.module.scss";
+import classes from './Profile.module.scss';
 
-import MyPosts from "./MyPosts/MyPosts";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-function Profile({ posts, addPost }) {
+function Profile({ posts, addPost, newPostText, updateNewPostText }) {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts posts={posts} addPost={addPost} />
+      <MyPosts
+        posts={posts}
+        addPost={addPost}
+        newPostText={newPostText}
+        updateNewPostText={updateNewPostText}
+      />
     </div>
   );
 }
