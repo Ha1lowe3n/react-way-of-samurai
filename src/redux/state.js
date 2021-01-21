@@ -1,5 +1,9 @@
 let rerenderEntireTree = () => { };
 
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
+}
+
 const state = {
   profilePage: {
     postsData: [
@@ -20,6 +24,7 @@ const state = {
       { id: 1, message: "Hi" },
       { id: 2, message: "Hello" },
       { id: 3, message: "What's up?" },
+      { id: 4, message: "Du hast" },
     ],
   }
 };
@@ -39,10 +44,6 @@ export const addPost = () => {
 export const updateNewPostText = (postText) => {
   state.profilePage.newPostText = postText;
   rerenderEntireTree(state);
-}
-
-export const subscribe = (observer) => {
-  rerenderEntireTree = observer;
 }
 
 export default state;
