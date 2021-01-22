@@ -24,7 +24,6 @@ const state = {
       { id: 1, message: "Hi" },
       { id: 2, message: "Hello" },
       { id: 3, message: "What's up?" },
-      { id: 4, message: "Du hast" },
     ],
   }
 };
