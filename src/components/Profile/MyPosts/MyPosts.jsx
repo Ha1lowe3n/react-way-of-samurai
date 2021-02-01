@@ -4,15 +4,20 @@ import classes from './MyPosts.module.scss';
 
 import Post from './Post/Post';
 
-function MyPosts({ posts, addPost, newPostText, updateNewPostText }) {
+function MyPosts({ posts, newPostText, dispatch }) {
   const newPost = React.useRef();
 
   const addNewPost = () => {
-    addPost();
+    dispatch({
+      type: 'ADD_POST',
+    });
   };
 
   const onPostChange = () => {
-    updateNewPostText(newPost.current.value);
+    dispatch({
+      type: 'UPDATE_NEW_POST_TEXT',
+      postText: newPost.current.value,
+    });
   };
 
   return (

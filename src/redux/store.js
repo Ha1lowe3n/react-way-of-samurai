@@ -31,25 +31,26 @@ const store = {
     console.log('state changed');
   },
 
-  addPost() {
-    const newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likesCount: 0
-    };
-
-    this._state.profilePage.postsData.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this._callSubsriber(this._state);
-  },
-
   subscribe(observer) {
     this._callSubsriber = observer;
   },
 
-  updateNewPostText(postText) {
-    this._state.profilePage.newPostText = postText;
-    this._callSubsriber(this._state);
+  dispatch(action) {
+    if (action.type === "ADD_POST") {
+      const newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likesCount: 0
+      };
+
+      this._state.profilePage.postsData.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this._callSubsriber(this._state);
+
+    } else if (action.type === "UPDATE_NEW_POST_TEXT") {
+      this._state.profilePage.newPostText = action.postText;
+      this._callSubsriber(this._state);
+    }
   }
 }
 

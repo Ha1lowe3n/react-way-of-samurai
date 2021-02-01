@@ -5,16 +5,11 @@ import classes from './Profile.module.scss';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-function Profile({ posts, addPost, newPostText, updateNewPostText }) {
+function Profile({ posts, dispatch, newPostText }) {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts
-        posts={posts}
-        addPost={addPost}
-        newPostText={newPostText}
-        updateNewPostText={updateNewPostText}
-      />
+      <MyPosts posts={posts} dispatch={dispatch} newPostText={newPostText} />
     </div>
   );
 }

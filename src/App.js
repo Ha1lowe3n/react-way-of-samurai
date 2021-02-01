@@ -6,7 +6,7 @@ import { Dialogs, Header, Navbar, Profile, News, Music, Settings } from './compo
 import './app.scss';
 
 
-function App({ state: { profilePage, dialogsPage }, addPost, updateNewPostText }) {
+function App({ state: { profilePage, dialogsPage }, dispatch }) {
 
   return (
     <div className="app-wrapper">
@@ -19,8 +19,7 @@ function App({ state: { profilePage, dialogsPage }, addPost, updateNewPostText }
             <Profile
               posts={profilePage.postsData}
               newPostText={profilePage.newPostText}
-              addPost={addPost}
-              updateNewPostText={updateNewPostText}
+              dispatch={dispatch}
             />
           }
         />
