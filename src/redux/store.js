@@ -1,3 +1,7 @@
+// action types
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+
 const store = {
   _state: {
     profilePage: {
@@ -53,6 +57,16 @@ const store = {
     }
   }
 }
+
+// action creators
+export const addPostActionCreator = () => ({
+  type: ADD_POST,
+});
+
+export const updateNewPostTextActionCreator = (text) => ({
+  type: UPDATE_NEW_POST_TEXT,
+  postText: text,
+});
 
 window.store = store;
 
