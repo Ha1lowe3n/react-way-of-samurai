@@ -1,3 +1,7 @@
+// reducers
+import profile from '../redux/reducers/profile';
+import dialogs from '../redux/reducers/dialogs';
+
 // action types
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
@@ -45,35 +49,10 @@ const store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      const newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likesCount: 0
-      };
+    profile(this._state.profilePage, action);
+    dialogs(this._state.dialogsPage, action);
 
-      this._state.profilePage.postsData.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._callSubsriber(this._state);
-
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.postText;
-      this._callSubsriber(this._state);
-
-    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._state.dialogsPage.newMessageText = action.messageText;
-      this._callSubsriber(this._state);
-
-    } else if (action.type === SEND_MESSAGE) {
-      const newMessage = {
-        id: 6,
-        message: this._state.dialogsPage.newMessageText
-      }
-
-      this._state.dialogsPage.messagesData.push(newMessage);
-      this._state.dialogsPage.newMessageText = '';
-      this._callSubsriber(this._state);
-    }
+    this._callSubsriber(this._state);
   }
 }
 
