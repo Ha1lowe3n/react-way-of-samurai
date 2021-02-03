@@ -3,7 +3,10 @@ import React from 'react';
 import classes from './MyPosts.module.scss';
 
 import Post from './Post/Post';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/store';
+import {
+  addPostActionCreator,
+  updateNewPostTextActionCreator,
+} from '../../../redux/reducers/profile';
 
 function MyPosts({ posts, newPostText, dispatch }) {
   const newPost = React.useRef();

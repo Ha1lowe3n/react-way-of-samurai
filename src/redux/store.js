@@ -2,12 +2,6 @@
 import profile from '../redux/reducers/profile';
 import dialogs from '../redux/reducers/dialogs';
 
-// action types
-const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-const SEND_MESSAGE = 'SEND_MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
-
 const store = {
   _state: {
     profilePage: {
@@ -55,25 +49,6 @@ const store = {
     this._callSubsriber(this._state);
   }
 }
-
-// action creators
-export const addPostActionCreator = () => ({
-  type: ADD_POST,
-});
-
-export const updateNewPostTextActionCreator = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  postText: text,
-});
-
-export const sendMessageActionCreator = () => ({
-  type: SEND_MESSAGE,
-});
-
-export const updateNewMessageTextActionCreator = (text) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  messageText: text
-});
 
 window.store = store;
 

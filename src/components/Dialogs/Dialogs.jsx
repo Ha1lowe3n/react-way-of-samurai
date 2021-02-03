@@ -4,7 +4,10 @@ import classes from './Dialogs.module.scss';
 
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { sendMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/store';
+import {
+  sendMessageActionCreator,
+  updateNewMessageTextActionCreator,
+} from '../../redux/reducers/dialogs';
 
 function Dialogs({ dialogs, messages, newMessageText, dispatch }) {
   const newMessage = React.useRef();

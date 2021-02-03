@@ -24,4 +24,13 @@ const dialogs = (state, action) => {
   }
 }
 
+export const sendMessageActionCreator = () => ({
+  type: SEND_MESSAGE,
+});
+
+export const updateNewMessageTextActionCreator = (text) => ({
+  type: UPDATE_NEW_MESSAGE_TEXT,
+  messageText: text
+});
+
 export default dialogs;

@@ -25,4 +25,14 @@ const profile = (state, action) => {
   }
 }
 
+// action creators
+export const addPostActionCreator = () => ({
+  type: ADD_POST,
+});
+
+export const updateNewPostTextActionCreator = (text) => ({
+  type: UPDATE_NEW_POST_TEXT,
+  postText: text,
+});
+
 export default profile;
