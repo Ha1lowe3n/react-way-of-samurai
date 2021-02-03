@@ -27,8 +27,10 @@ function App({ state: { profilePage, dialogsPage }, dispatch }) {
           path="/dialogs"
           render={() => (
             <Dialogs
+              newMessageText={dialogsPage.newMessageText}
               dialogs={dialogsPage.dialogsData}
               messages={dialogsPage.messagesData}
+              dispatch={dispatch}
             />
           )}
         />

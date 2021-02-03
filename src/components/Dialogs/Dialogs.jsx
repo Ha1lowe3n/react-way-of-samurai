@@ -1,15 +1,20 @@
-import React from "react";
+import React from 'react';
 
-import classes from "./Dialogs.module.scss";
+import classes from './Dialogs.module.scss';
 
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
+import { sendMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/store';
 
-function Dialogs({ dialogs, messages }) {
+function Dialogs({ dialogs, messages, newMessageText, dispatch }) {
   const newMessage = React.useRef();
 
   const addMessage = () => {
-    alert(newMessage.current.value);
+    dispatch(sendMessageActionCreator());
+  };
+
+  const onChangeMessage = () => {
+    dispatch(updateNewMessageTextActionCreator(newMessage.current.value));
   };
 
   return (
@@ -21,12 +26,16 @@ function Dialogs({ dialogs, messages }) {
       </div>
 
       <div className={classes.messages}>
-        {messages.map((m) => (
-          <Message message={m.message} />
+        {messages.map((m, i) => (
+          <Message key={`${m}_${i}`} message={m.message} />
         ))}
 
         <div className={classes.textarea}>
-          <textarea ref={newMessage}></textarea>
+          <textarea
+            ref={newMessage}
+            onChange={onChangeMessage}
+            value={newMessageText}
+            placeholder="Enter your message"></textarea>
         </div>
         <button onClick={addMessage}>Add</button>
       </div>
