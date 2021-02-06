@@ -2,7 +2,24 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 
-const dialogs = (state, action) => {
+const initialState = {
+  dialogsData: [
+    { id: 1, name: "Dima" },
+    { id: 2, name: "Oleg" },
+    { id: 3, name: "Sveta" },
+    { id: 4, name: "Valera" },
+  ],
+
+  messagesData: [
+    { id: 1, message: "Hi" },
+    { id: 2, message: "Hello" },
+    { id: 3, message: "What's up?" },
+  ],
+
+  newMessageText: ""
+};
+
+const dialogs = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
       const newMessage = {

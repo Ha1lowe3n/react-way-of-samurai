@@ -4,10 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.scss';
 
-import store from './redux/store';
+import store from './redux/redux-store';
 import App from './App';
 
+
 const rerenderEntireTree = (state) => {
+  debugger;
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
@@ -23,6 +25,8 @@ const rerenderEntireTree = (state) => {
 
 rerenderEntireTree(store.getState());
 
-store.subscribe(rerenderEntireTree);
+store.subscribe(() => {
+  rerenderEntireTree(store.getState());
+});
 
 

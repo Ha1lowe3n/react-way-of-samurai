@@ -2,7 +2,15 @@
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
-const profile = (state, action) => {
+const initialState = {
+  postsData: [
+    { id: 1, message: "Hello", likesCount: "9" },
+    { id: 2, message: "Hi", likesCount: "7" },
+  ],
+  newPostText: ""
+};
+
+const profile = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       const newPost = {

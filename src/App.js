@@ -6,7 +6,7 @@ import { Dialogs, Header, Navbar, Profile, News, Music, Settings } from './compo
 import './app.scss';
 
 
-function App({ state: { profilePage, dialogsPage }, dispatch }) {
+function App({ state: { profile, dialogs }, dispatch }) {
 
   return (
     <div className="app-wrapper">
@@ -17,8 +17,8 @@ function App({ state: { profilePage, dialogsPage }, dispatch }) {
           path="/profile"
           render={() =>
             <Profile
-              posts={profilePage.postsData}
-              newPostText={profilePage.newPostText}
+              posts={profile.postsData}
+              newPostText={profile.newPostText}
               dispatch={dispatch}
             />
           }
@@ -27,9 +27,9 @@ function App({ state: { profilePage, dialogsPage }, dispatch }) {
           path="/dialogs"
           render={() => (
             <Dialogs
-              newMessageText={dialogsPage.newMessageText}
-              dialogs={dialogsPage.dialogsData}
-              messages={dialogsPage.messagesData}
+              newMessageText={dialogs.newMessageText}
+              dialogs={dialogs.dialogsData}
+              messages={dialogs.messagesData}
               dispatch={dispatch}
             />
           )}
