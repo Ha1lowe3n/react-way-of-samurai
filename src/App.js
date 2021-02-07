@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import { Dialogs, Header, Navbar, Profile, News, Music, Settings } from './components';
+import { DialogsContainer, Header, Navbar, Profile, News, Music, Settings } from './components';
 
 import './app.scss';
 
@@ -26,7 +26,7 @@ function App({ state: { profile, dialogs }, dispatch }) {
         <Route
           path="/dialogs"
           render={() => (
-            <Dialogs
+            <DialogsContainer
               newMessageText={dialogs.newMessageText}
               dialogs={dialogs.dialogsData}
               messages={dialogs.messagesData}

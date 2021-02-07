@@ -4,21 +4,12 @@ import classes from './Dialogs.module.scss';
 
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import {
-  sendMessageActionCreator,
-  updateNewMessageTextActionCreator,
-} from '../../redux/reducers/dialogs';
 
-function Dialogs({ dialogs, messages, newMessageText, dispatch }) {
+function Dialogs({ dialogs, messages, newMessageText, addMessage, onChangeMessage }) {
   const newMessage = React.useRef();
 
-  const addMessage = () => {
-    dispatch(sendMessageActionCreator());
-  };
-
-  const onChangeMessage = () => {
-    dispatch(updateNewMessageTextActionCreator(newMessage.current.value));
-  };
+  const sendMessage = () => addMessage();
+  const updateNewMessage = () => onChangeMessage(newMessage.current.value);
 
   return (
     <div className={classes.dialogs}>
@@ -36,11 +27,11 @@ function Dialogs({ dialogs, messages, newMessageText, dispatch }) {
         <div className={classes.textarea}>
           <textarea
             ref={newMessage}
-            onChange={onChangeMessage}
+            onChange={updateNewMessage}
             value={newMessageText}
             placeholder="Enter your message"></textarea>
         </div>
-        <button onClick={addMessage}>Add</button>
+        <button onClick={sendMessage}>Add</button>
       </div>
     </div>
   );

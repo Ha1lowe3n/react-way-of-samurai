@@ -4,6 +4,7 @@ import {
   addPostActionCreator,
   updateNewPostTextActionCreator,
 } from '../../../redux/reducers/profile';
+
 import MyPosts from './MyPosts';
 
 function MyPostsContainer({ posts, newPostText, dispatch }) {
