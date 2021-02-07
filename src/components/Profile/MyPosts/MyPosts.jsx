@@ -3,21 +3,12 @@ import React from 'react';
 import classes from './MyPosts.module.scss';
 
 import Post from './Post/Post';
-import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
-} from '../../../redux/reducers/profile';
 
-function MyPosts({ posts, newPostText, dispatch }) {
+function MyPosts({ posts, newPostText, addPost, updateNewPostText }) {
   const newPost = React.useRef();
 
-  const addNewPost = () => {
-    dispatch(addPostActionCreator());
-  };
-
-  const onPostChange = () => {
-    dispatch(updateNewPostTextActionCreator(newPost.current.value));
-  };
+  const addNewPost = () => addPost();
+  const onPostChange = () => updateNewPostText(newPost.current.value);
 
   return (
     <div className={classes.postsBlock}>
