@@ -5,11 +5,11 @@ import classes from './Profile.module.scss';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-function Profile({ posts, dispatch, newPostText }) {
+function Profile() {
   return (
     <div>
       <ProfileInfo />
-      <MyPostsContainer posts={posts} dispatch={dispatch} newPostText={newPostText} />
+      <MyPostsContainer />
     </div>
   );
 }

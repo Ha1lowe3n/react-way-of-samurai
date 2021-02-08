@@ -3,14 +3,14 @@ const SEND_MESSAGE = 'SEND_MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 
 const initialState = {
-  dialogsData: [
+  dialogs: [
     { id: 1, name: "Dima" },
     { id: 2, name: "Oleg" },
     { id: 3, name: "Sveta" },
     { id: 4, name: "Valera" },
   ],
 
-  messagesData: [
+  messages: [
     { id: 1, message: "Hi" },
     { id: 2, message: "Hello" },
     { id: 3, message: "What's up?" },
@@ -27,7 +27,7 @@ const dialogs = (state = initialState, action) => {
         message: state.newMessageText
       }
 
-      state.messagesData.push(newMessage);
+      state.messages.push(newMessage);
       state.newMessageText = '';
 
       return state;

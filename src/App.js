@@ -6,7 +6,7 @@ import { DialogsContainer, Header, Navbar, Profile, News, Music, Settings } from
 import './app.scss';
 
 
-function App({ state: { profile, dialogs }, dispatch }) {
+function App() {
 
   return (
     <div className="app-wrapper">
@@ -16,22 +16,13 @@ function App({ state: { profile, dialogs }, dispatch }) {
         <Route
           path="/profile"
           render={() =>
-            <Profile
-              posts={profile.postsData}
-              newPostText={profile.newPostText}
-              dispatch={dispatch}
-            />
+            <Profile />
           }
         />
         <Route
           path="/dialogs"
           render={() => (
-            <DialogsContainer
-              newMessageText={dialogs.newMessageText}
-              dialogs={dialogs.dialogsData}
-              messages={dialogs.messagesData}
-              dispatch={dispatch}
-            />
+            <DialogsContainer />
           )}
         />
         <Route path="/news" component={News} />

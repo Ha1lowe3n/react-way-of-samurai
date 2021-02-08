@@ -4,7 +4,7 @@ import classes from './MyPosts.module.scss';
 
 import Post from './Post/Post';
 
-function MyPosts({ posts, newPostText, addPost, updateNewPostText }) {
+function MyPosts({ profile: { posts, newPostText }, addPost, updateNewPostText }) {
   const newPost = React.useRef();
 
   const addNewPost = () => addPost();

@@ -3,7 +3,7 @@ const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
 const initialState = {
-  postsData: [
+  posts: [
     { id: 1, message: "Hello", likesCount: "9" },
     { id: 2, message: "Hi", likesCount: "7" },
   ],
@@ -19,7 +19,7 @@ const profile = (state = initialState, action) => {
         likesCount: 0
       };
 
-      state.postsData.push(newPost);
+      state.posts.push(newPost);
       state.newPostText = '';
 
       return state;

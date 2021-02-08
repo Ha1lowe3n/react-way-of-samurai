@@ -5,7 +5,7 @@ import classes from './Dialogs.module.scss';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 
-function Dialogs({ dialogs, messages, newMessageText, addMessage, onChangeMessage }) {
+function Dialogs({ dialogs: { dialogs, messages, newMessageText }, addMessage, onChangeMessage }) {
   const newMessage = React.useRef();
 
   const sendMessage = () => addMessage();
