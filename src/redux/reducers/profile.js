@@ -12,21 +12,33 @@ const initialState = {
 
 const profile = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       const newPost = {
         id: 5,
         message: state.newPostText,
         likesCount: 0
       };
 
-      state.posts.push(newPost);
-      state.newPostText = '';
+      const newState = {
+        ...state,
+        posts: [...state.posts],
+      }
 
-      return state;
+      newState.posts.push(newPost);
+      newState.newPostText = '';
 
-    case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.postText;
-      return state;
+      return newState;
+    }
+
+    case UPDATE_NEW_POST_TEXT: {
+      const newState = {
+        ...state,
+        newPostText: action.postText
+      }
+
+      //newState.newPostText = action.postText;
+      return newState;
+    }
 
     default:
       return state;

@@ -21,20 +21,31 @@ const initialState = {
 
 const dialogs = (state = initialState, action) => {
   switch (action.type) {
-    case SEND_MESSAGE:
+    case SEND_MESSAGE: {
       const newMessage = {
         id: 6,
         message: state.newMessageText
       }
 
-      state.messages.push(newMessage);
-      state.newMessageText = '';
+      const newState = {
+        ...state,
+        messages: [...state.messages]
+      }
 
-      return state;
+      newState.messages.push(newMessage);
+      newState.newMessageText = '';
 
-    case UPDATE_NEW_MESSAGE_TEXT:
-      state.newMessageText = action.messageText;
-      return state;
+      return newState;
+    }
+
+    case UPDATE_NEW_MESSAGE_TEXT: {
+      const newState = {
+        ...state,
+        newMessageText: action.messageText
+      }
+
+      return newState;
+    }
 
     default:
       return state;
