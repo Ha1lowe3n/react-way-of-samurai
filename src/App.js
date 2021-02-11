@@ -1,13 +1,21 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import { DialogsContainer, Header, Navbar, Profile, News, Music, Settings } from './components';
+import {
+  DialogsContainer,
+  Header,
+  Navbar,
+  Profile,
+  News,
+  Music,
+  Settings,
+  UsersContainer
+} from './components';
 
 import './app.scss';
 
 
 function App() {
-
   return (
     <div className="app-wrapper">
       <Header />
@@ -23,6 +31,12 @@ function App() {
           path="/dialogs"
           render={() => (
             <DialogsContainer />
+          )}
+        />
+        <Route
+          path="/users"
+          render={() => (
+            <UsersContainer />
           )}
         />
         <Route path="/news" component={News} />
