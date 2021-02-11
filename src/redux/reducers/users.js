@@ -4,38 +4,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
 const initialState = {
-  users: [
-    // {
-    //   id: 1,
-    //   followed: true,
-    //   fullName: 'Ilya',
-    //   status: 'student',
-    //   location: {
-    //     city: 'Krasnoyarsk',
-    //     country: 'Russia'
-    //   }
-    // },
-    // {
-    //   id: 2,
-    //   followed: false,
-    //   fullName: 'Egor',
-    //   status: 'rabotyaga',
-    //   location: {
-    //     city: 'Kamchatka',
-    //     country: 'Russia'
-    //   }
-    // },
-    // {
-    //   id: 3,
-    //   followed: true,
-    //   fullName: 'Sasha',
-    //   status: 'bomj',
-    //   location: {
-    //     city: 'kolodec',
-    //     country: 'Russia'
-    //   }
-    // }
-  ],
+  users: [],
 };
 
 const users = (state = initialState, action) => {
