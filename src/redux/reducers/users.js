@@ -95,9 +95,9 @@ export const unfollowAC = (userId) => ({
   userId
 });
 
-export const setUsersAC = (userId) => ({
+export const setUsersAC = (users) => ({
   type: SET_USERS,
-  userId
+  users
 });
 
 
