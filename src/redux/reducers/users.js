@@ -4,7 +4,44 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
 const initialState = {
-  users: [],
+  users: [
+    {
+      id: 1,
+      photoUrl:
+        'https://avatars.mds.yandex.net/get-zen_doc/1640581/pub_5e0497c82beb4900ad59a2d0_5e04996e028d6800ac20ec89/scale_1200',
+      followed: true,
+      fullName: 'Ilya',
+      status: 'student',
+      location: {
+        city: 'Krasnoyarsk',
+        country: 'Russia',
+      },
+    },
+    {
+      id: 2,
+      photoUrl:
+        'https://avatars.mds.yandex.net/get-zen_doc/1640581/pub_5e0497c82beb4900ad59a2d0_5e04996e028d6800ac20ec89/scale_1200',
+      followed: false,
+      fullName: 'Egor',
+      status: 'rabotyaga',
+      location: {
+        city: 'Kamchatka',
+        country: 'Russia',
+      },
+    },
+    {
+      id: 3,
+      photoUrl:
+        'https://avatars.mds.yandex.net/get-zen_doc/1640581/pub_5e0497c82beb4900ad59a2d0_5e04996e028d6800ac20ec89/scale_1200',
+      followed: true,
+      fullName: 'Sasha',
+      status: 'bomj',
+      location: {
+        city: 'kolodec',
+        country: 'Russia',
+      },
+    },
+  ],
 };
 
 const users = (state = initialState, action) => {
@@ -44,7 +81,7 @@ const users = (state = initialState, action) => {
         ...state,
         users: [
           ...state.users,
-          action.users
+          ...action.users
         ]
       }
 
