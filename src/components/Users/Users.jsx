@@ -5,10 +5,7 @@ import userPhoto from '../../assets/images/avatarDefault.jpg';
 import classes from './Users.module.scss';
 
 class Users extends React.Component {
-  constructor(props) {
-    super(props);
-    alert('new');
-
+  componentDidMount() {
     if (this.props.users.length === 0) {
       axios
         .get('https://social-network.samuraijs.com/api/1.0/users')
@@ -18,7 +15,6 @@ class Users extends React.Component {
 
   render() {
     const { users, follow, unfollow } = this.props;
-    console.log(this.props);
 
     return (
       <div className={classes.user}>
@@ -30,14 +26,6 @@ class Users extends React.Component {
                   src={user.photos.small !== null ? user.photos.small : userPhoto}
                   alt="user photo"
                 />
-              </div>
-
-              <div>
-                {user.followed ? (
-                  <button onClick={() => unfollow(user.id)}>unfollow</button>
-                ) : (
-                  <button onClick={() => follow(user.id)}>follow</button>
-                )}
               </div>
 
               <div>
