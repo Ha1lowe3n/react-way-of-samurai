@@ -5,6 +5,8 @@ const SET_USERS = 'SET_USERS';
 
 const initialState = {
   users: [],
+  pageSize: 5,
+  totalUsersCount: 0
 };
 
 const users = (state = initialState, action) => {

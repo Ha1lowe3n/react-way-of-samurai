@@ -14,10 +14,19 @@ class Users extends React.Component {
   }
 
   render() {
-    const { users, follow, unfollow } = this.props;
+    const { users, follow, unfollow, totalUsersCount, pagesSize } = this.props;
+
+    const pagesCount = totalUsersCount / pagesSize;
 
     return (
       <div className={classes.user}>
+        <div className={classes.pages}>
+          <span>1</span>
+          <span className={classes.selectedPage}>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+        </div>
         {users.map((user, i) => (
           <div key={`${user}_${i}`}>
             <span>
