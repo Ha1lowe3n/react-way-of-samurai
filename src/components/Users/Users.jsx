@@ -6,27 +6,59 @@ import classes from './Users.module.scss';
 
 class Users extends React.Component {
   componentDidMount() {
+    const { currentPage, setUsers, pageSize, setTotalUsersCount } = this.props;
+
     if (this.props.users.length === 0) {
       axios
-        .get('https://social-network.samuraijs.com/api/1.0/users')
-        .then((res) => this.props.setUsers(res.data.items));
+        .get(
+          `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
+        )
+        .then((res) => {
+          setUsers(res.data.items);
+          setTotalUsersCount(res.data.totalCount);
+        });
     }
   }
 
-  render() {
-    const { users, follow, unfollow, totalUsersCount, pagesSize } = this.props;
+  onPageChanged = (pageNumber) => {
+    this.props.setCurrentPage(pageNumber);
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
+      )
+      .then((res) => this.props.setUsers(res.data.items));
+  };
 
-    const pagesCount = totalUsersCount / pagesSize;
+  render() {
+    const { users, follow, unfollow, totalUsersCount, pageSize, currentPage } = this.props;
+
+    // кол-во страниц
+    const pagesCount = Math.ceil(totalUsersCount / pageSize);
+
+    // отображение кол-ва страниц
+    const pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+      pages.push(i);
+    }
 
     return (
       <div className={classes.user}>
         <div className={classes.pages}>
-          <span>1</span>
-          <span className={classes.selectedPage}>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
+          {pages.map((page, i) => {
+            // поставил ограничение из-за огромного кол-ва пользователей
+            for (; i < 10; i++) {
+              return (
+                <span
+                  onClick={() => this.onPageChanged(page)}
+                  key={`${page}_${i}`}
+                  className={page === currentPage ? classes.selectedPage : ''}>
+                  {page}
+                </span>
+              );
+            }
+          })}
         </div>
+
         {users.map((user, i) => (
           <div key={`${user}_${i}`}>
             <span>

@@ -8,8 +8,16 @@
   }
 
   .pages {
+    margin-bottom: 10px;
+
+    span {
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
     .selectedPage {
       font-weight: bold;
+      color: #fff;
     }
   }
 }
