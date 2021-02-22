@@ -1,6 +1,6 @@
 // reducers
-import profile from '../redux/reducers/profile';
-import dialogs from '../redux/reducers/dialogs';
+import profile from './reducers/profile';
+import dialogs from './reducers/dialogs';
 
 const store = {
   _state: {
