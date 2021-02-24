@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import userPhoto from '../../assets/images/avatarDefault.jpg';
 import classes from './Users.module.scss';
@@ -35,13 +36,20 @@ function Users({ users, follow, unfollow, totalUsersCount, pageSize, currentPage
         <div key={`${user}_${i}`}>
           <span>
             <div className={classes.photo}>
-              <img
-                src={user.photos.small !== null ? user.photos.small : userPhoto}
-                alt="user photo"
-              />
+              <NavLink to={`/profile/${user.id}`}>
+                <img
+                  src={user.photos.small !== null ? user.photos.small : userPhoto}
+                  alt="user photo"
+                />
+              </NavLink>
             </div>
 
             <div>
+              {user.followed ? (
+                <button onClick={() => unfollow(user.id)}>unfollow</button>
+              ) : (
+                <button onClick={() => follow(user.id)}>follow</button>
+              )}
               {user.followed ? (
                 <button onClick={() => unfollow(user.id)}>unfollow</button>
               ) : (
