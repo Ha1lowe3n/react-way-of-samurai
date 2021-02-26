@@ -50,6 +50,11 @@ function Users({ users, follow, unfollow, totalUsersCount, pageSize, currentPage
               ) : (
                 <button onClick={() => follow(user.id)}>follow</button>
               )}
+              {user.followed ? (
+                <button onClick={() => unfollow(user.id)}>unfollow</button>
+              ) : (
+                <button onClick={() => follow(user.id)}>follow</button>
+              )}
             </div>
           </span>
 
