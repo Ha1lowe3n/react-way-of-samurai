@@ -1,8 +1,13 @@
-import React from "react";
+import React from 'react';
+import { Preloader } from '../../common';
 
-import classes from "./ProfileInfo.module.scss";
+import classes from './ProfileInfo.module.scss';
 
-function ProfileInfo() {
+function ProfileInfo({ profile }) {
+  if (!profile) {
+    return <Preloader />;
+  }
+
   return (
     <div className={classes.wrapper}>
       <img
@@ -10,7 +15,10 @@ function ProfileInfo() {
         alt="wrapper"
       />
 
-      <div className={classes.descr}>ava + descr</div>
+      <div className={classes.descr}>
+        <img src={profile.photos.large} />
+        ava + descr
+      </div>
     </div>
   );
 }

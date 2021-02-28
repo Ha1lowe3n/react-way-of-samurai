@@ -18,7 +18,7 @@ function Users({ users, follow, unfollow, totalUsersCount, pageSize, currentPage
     <div className={classes.user}>
       <div className={classes.pages}>
         {pages.map((page, i) => {
-          // поставил ограничение из-за огромного кол-ва пользователей
+          // поставил цикл для ограничения из-за огромного кол-ва пользователей
           while (i < 10) {
             return (
               <span

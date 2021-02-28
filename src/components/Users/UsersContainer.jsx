@@ -68,7 +68,6 @@ class UsersContainer extends React.Component {
           pageSize={pageSize}
           currentPage={currentPage}
           onPageChanged={this.onPageChanged}
-          isFetching={isFetching}
         />
       </>
     );

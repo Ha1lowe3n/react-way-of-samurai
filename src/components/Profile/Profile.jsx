@@ -5,10 +5,10 @@ import classes from './Profile.module.scss';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-function Profile() {
+function Profile({ profile }) {
   return (
     <div>
-      <ProfileInfo />
+      <ProfileInfo profile={profile} />
       <MyPostsContainer />
     </div>
   );

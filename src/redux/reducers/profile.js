@@ -1,14 +1,15 @@
 // action types
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 const initialState = {
   posts: [
     { id: 1, message: "Hello", likesCount: "9" },
     { id: 2, message: "Hi", likesCount: "7" },
   ],
-
-  newPostText: ""
+  newPostText: "",
+  profileInfo: null
 };
 
 const profile = (state = initialState, action) => {
@@ -32,19 +33,30 @@ const profile = (state = initialState, action) => {
         newPostText: action.postText
       }
 
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        profileInfo: action.profileInfo
+      }
+
     default:
       return state;
   }
 }
 
 // action creators
-export const addPostActionCreator = () => ({
+export const addPost = () => ({
   type: ADD_POST,
 });
 
-export const updateNewPostTextActionCreator = (text) => ({
+export const updateNewPostText = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
   postText: text,
 });
+
+export const setUserProfile = (profileInfo) => ({
+  type: SET_USER_PROFILE,
+  profileInfo
+})
 
 export default profile;

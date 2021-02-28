@@ -5,7 +5,7 @@ import {
   DialogsContainer,
   Header,
   Navbar,
-  Profile,
+  ProfileContainer,
   News,
   Music,
   Settings,
@@ -24,7 +24,7 @@ function App() {
         <Route
           path="/profile"
           render={() =>
-            <Profile />
+            <ProfileContainer />
           }
         />
         <Route
