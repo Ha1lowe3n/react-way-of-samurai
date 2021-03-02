@@ -19,10 +19,6 @@ function ProfileInfo({ profile }) {
         <img src={profile.photos.large} />
         ava + descr
       </div>
-      <div className={classes.descr}>
-        <img src={profile.photos.large} />
-        ava + descr
-      </div>
     </div>
   );
 }
