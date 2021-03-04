@@ -12,7 +12,6 @@ class HeaderContainer extends React.Component {
                 withCredentials: true,
             })
             .then((res) => {
-                console.log(res);
                 if (res.data.resultCode === 0) {
                     const { id, email, login } = res.data.data;
                     this.props.setAuthUserData(id, email, login);

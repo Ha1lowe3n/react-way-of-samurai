@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import userPhoto from "../../assets/images/avatarDefault.jpg";
 import classes from "./Users.module.scss";
-import axios from "axios";
+import { usersAPI } from "../../api/api";
 
 function Users({
     users,
@@ -57,7 +57,7 @@ function Users({
                                             ? user.photos.small
                                             : userPhoto
                                     }
-                                    alt="user photo"
+                                    alt="user_photo"
                                 />
                             </NavLink>
                         </div>
@@ -66,19 +66,10 @@ function Users({
                             {user.followed ? (
                                 <button
                                     onClick={() => {
-                                        axios
-                                            .delete(
-                                                `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                                                {
-                                                    withCredentials: true,
-                                                    headers: {
-                                                        "API-KEY":
-                                                            "f6d122c0-e13a-41a0-8a89-732f8ec98129",
-                                                    },
-                                                }
-                                            )
-                                            .then((res) => {
-                                                if (res.data.resultCode === 0) {
+                                        usersAPI
+                                            .unfollowUser(user.id)
+                                            .then((data) => {
+                                                if (data.resultCode === 0) {
                                                     unfollow(user.id);
                                                 }
                                             });
@@ -89,20 +80,10 @@ function Users({
                             ) : (
                                 <button
                                     onClick={() => {
-                                        axios
-                                            .post(
-                                                `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                                                {},
-                                                {
-                                                    withCredentials: true,
-                                                    headers: {
-                                                        "API-KEY":
-                                                            "f6d122c0-e13a-41a0-8a89-732f8ec98129",
-                                                    },
-                                                }
-                                            )
-                                            .then((res) => {
-                                                if (res.data.resultCode === 0) {
+                                        usersAPI
+                                            .followUser(user.id)
+                                            .then((data) => {
+                                                if (data.resultCode === 0) {
                                                     follow(user.id);
                                                 }
                                             });
