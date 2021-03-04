@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 
 import {
     DialogsContainer,
-    Header,
+    HeaderContainer,
     Navbar,
     ProfileContainer,
     News,
@@ -17,7 +17,7 @@ import "./app.scss";
 function App() {
     return (
         <div className="app-wrapper">
-            <Header />
+            <HeaderContainer />
             <Navbar />
             <div className="app-wrapper--content">
                 <Route

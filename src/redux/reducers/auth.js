@@ -1,57 +1,35 @@
 // action types
-const SEND_MESSAGE = 'SEND_MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
+const SET_USER_DATA = "SET_USER_DATA";
 
 const initialState = {
-  dialogs: [
-    { id: 1, name: "Dima" },
-    { id: 2, name: "Oleg" },
-    { id: 3, name: "Sveta" },
-    { id: 4, name: "Valera" },
-  ],
-
-  messages: [
-    { id: 1, message: "Hi" },
-    { id: 2, message: "Hello" },
-    { id: 3, message: "What's up?" },
-  ],
-
-  newMessageText: ""
+    userId: null,
+    email: null,
+    login: null,
+    isAuth: false,
 };
 
-const dialogs = (state = initialState, action) => {
-  switch (action.type) {
-    case SEND_MESSAGE:
-      const newMessage = {
-        id: 6,
-        message: state.newMessageText
-      }
+const auth = (state = initialState, action) => {
+    switch (action.type) {
+        case SET_USER_DATA:
+            return {
+                ...state,
+                ...action.data,
+                isAuth: true,
+            };
 
-      return {
-        ...state,
-        messages: [...state.messages, newMessage],
-        newMessageText: ""
-      }
-
-    case UPDATE_NEW_MESSAGE_TEXT:
-      return {
-        ...state,
-        newMessageText: action.messageText
-      }
-
-    default:
-      return state;
-  }
-}
+        default:
+            return state;
+    }
+};
 
 // action creators
-export const sendMessageActionCreator = () => ({
-  type: SEND_MESSAGE,
+export const setAuthUserData = (userId, email, login) => ({
+    type: SET_USER_DATA,
+    data: {
+        userId,
+        email,
+        login,
+    },
 });
 
-export const updateNewMessageTextActionCreator = (text) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  messageText: text
-});
-
-export default dialogs;
+export default auth;

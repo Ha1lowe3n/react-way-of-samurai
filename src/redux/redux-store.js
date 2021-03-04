@@ -1,11 +1,12 @@
 import { createStore, combineReducers } from "redux";
 
-import { profile, dialogs, users } from "./reducers";
+import { profile, dialogs, users, auth } from "./reducers";
 
 const reducers = combineReducers({
     profile,
     dialogs,
     users,
+    auth,
 });
 
 const store = createStore(
