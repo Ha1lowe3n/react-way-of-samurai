@@ -13,6 +13,8 @@ function Users({
     pageSize,
     currentPage,
     onPageChanged,
+    toggleFollowingProgress,
+    followingInProgress,
 }) {
     // кол-во страниц
     const pagesCount = Math.ceil(totalUsersCount / pageSize);
@@ -65,13 +67,16 @@ function Users({
                         <div>
                             {user.followed ? (
                                 <button
+                                    disabled={followingInProgress}
                                     onClick={() => {
+                                        toggleFollowingProgress(true);
                                         usersAPI
                                             .unfollowUser(user.id)
                                             .then((data) => {
                                                 if (data.resultCode === 0) {
                                                     unfollow(user.id);
                                                 }
+                                                toggleFollowingProgress(false);
                                             });
                                     }}
                                 >
@@ -79,13 +84,16 @@ function Users({
                                 </button>
                             ) : (
                                 <button
+                                    disabled={followingInProgress}
                                     onClick={() => {
+                                        toggleFollowingProgress(true);
                                         usersAPI
                                             .followUser(user.id)
                                             .then((data) => {
                                                 if (data.resultCode === 0) {
                                                     follow(user.id);
                                                 }
+                                                toggleFollowingProgress(false);
                                             });
                                     }}
                                 >
