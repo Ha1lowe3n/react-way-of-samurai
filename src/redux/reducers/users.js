@@ -13,7 +13,7 @@ const initialState = {
     totalUsersCount: 0, // сколько всего пользователей
     currentPage: 1, // текущая страница
     isFetching: true, // прелоадер
-    followingInProgress: false, // дизейбл кнопки
+    followingInProgress: [], // дизейбл кнопки
 };
 
 const users = (state = initialState, action) => {
