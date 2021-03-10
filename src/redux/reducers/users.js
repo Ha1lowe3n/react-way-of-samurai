@@ -75,7 +75,11 @@ const users = (state = initialState, action) => {
         case TOGGLE_FOLLOWING_PROGRESS:
             return {
                 ...state,
-                followingInProgress: action.isFetching,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(
+                          (id) => id !== action.userId
+                      ),
             };
 
         default:
@@ -114,9 +118,10 @@ export const toggleIsFetching = (isFetching) => ({
     isFetching,
 });
 
-export const toggleFollowingProgress = (isFetching) => ({
+export const toggleFollowingProgress = (isFetching, userId) => ({
     type: TOGGLE_FOLLOWING_PROGRESS,
     isFetching,
+    userId,
 });
 
 export default users;

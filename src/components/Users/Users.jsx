@@ -67,16 +67,21 @@ function Users({
                         <div>
                             {user.followed ? (
                                 <button
-                                    disabled={followingInProgress}
+                                    disabled={followingInProgress.some(
+                                        (id) => id === user.id
+                                    )}
                                     onClick={() => {
-                                        toggleFollowingProgress(true);
+                                        toggleFollowingProgress(true, user.id);
                                         usersAPI
                                             .unfollowUser(user.id)
                                             .then((data) => {
                                                 if (data.resultCode === 0) {
                                                     unfollow(user.id);
                                                 }
-                                                toggleFollowingProgress(false);
+                                                toggleFollowingProgress(
+                                                    false,
+                                                    user.id
+                                                );
                                             });
                                     }}
                                 >
@@ -84,16 +89,21 @@ function Users({
                                 </button>
                             ) : (
                                 <button
-                                    disabled={followingInProgress}
+                                    disabled={followingInProgress.some(
+                                        (id) => id === user.id
+                                    )}
                                     onClick={() => {
-                                        toggleFollowingProgress(true);
+                                        toggleFollowingProgress(true, user.id);
                                         usersAPI
                                             .followUser(user.id)
                                             .then((data) => {
                                                 if (data.resultCode === 0) {
                                                     follow(user.id);
                                                 }
-                                                toggleFollowingProgress(false);
+                                                toggleFollowingProgress(
+                                                    false,
+                                                    user.id
+                                                );
                                             });
                                     }}
                                 >
