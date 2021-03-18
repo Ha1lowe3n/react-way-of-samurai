@@ -7,3 +7,4 @@ export { default as Music } from "./Music/Music";
 export { default as Settings } from "./Settings/Settings";
 export { default as UsersContainer } from "./Users/UsersContainer";
 export { default as HeaderContainer } from "./Header/HeaderContainer";
+export { default as Login } from "./Login/Login";

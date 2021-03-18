@@ -10,6 +10,7 @@ import {
     Music,
     Settings,
     UsersContainer,
+    Login,
 } from "./components";
 
 import "./app.scss";
@@ -24,8 +25,9 @@ function App() {
                     path="/profile/:userId?"
                     render={() => <ProfileContainer />}
                 />
-                <Route path="/dialogs" render={() => <DialogsContainer />} />
-                <Route path="/users" render={() => <UsersContainer />} />
+                <Route path="/dialogs" component={DialogsContainer} />
+                <Route path="/users" component={UsersContainer} />
+                <Route path="/login" component={Login} />
                 <Route path="/news" component={News} />
                 <Route path="/music" component={Music} />
                 <Route path="/settings" component={Settings} />
