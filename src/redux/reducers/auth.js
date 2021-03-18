@@ -1,4 +1,6 @@
 // action types
+import { authAPI } from "../../api/api";
+
 const SET_USER_DATA = "SET_USER_DATA";
 
 const initialState = {
@@ -31,5 +33,15 @@ export const setAuthUserData = (userId, email, login) => ({
         login,
     },
 });
+
+// thunk
+export const getAuthUserData = () => (dispatch) => {
+    authAPI.me().then((res) => {
+        if (res.data.resultCode === 0) {
+            const { id, email, login } = res.data.data;
+            dispatch(setAuthUserData(id, email, login));
+        }
+    });
+};
 
 export default auth;
