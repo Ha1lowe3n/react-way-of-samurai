@@ -3,18 +3,16 @@ import { NavLink } from "react-router-dom";
 
 import userPhoto from "../../assets/images/avatarDefault.jpg";
 import classes from "./Users.module.scss";
-import { usersAPI } from "../../api/api";
 
 function Users({
     users,
-    follow,
-    unfollow,
     totalUsersCount,
     pageSize,
     currentPage,
     onPageChanged,
-    toggleFollowingProgress,
     followingInProgress,
+    followUser,
+    unfollowUser,
 }) {
     // кол-во страниц
     const pagesCount = Math.ceil(totalUsersCount / pageSize);
@@ -70,20 +68,7 @@ function Users({
                                     disabled={followingInProgress.some(
                                         (id) => id === user.id
                                     )}
-                                    onClick={() => {
-                                        toggleFollowingProgress(true, user.id);
-                                        usersAPI
-                                            .unfollowUser(user.id)
-                                            .then((data) => {
-                                                if (data.resultCode === 0) {
-                                                    unfollow(user.id);
-                                                }
-                                                toggleFollowingProgress(
-                                                    false,
-                                                    user.id
-                                                );
-                                            });
-                                    }}
+                                    onClick={() => unfollowUser(user.id)}
                                 >
                                     unfollow
                                 </button>
@@ -92,20 +77,7 @@ function Users({
                                     disabled={followingInProgress.some(
                                         (id) => id === user.id
                                     )}
-                                    onClick={() => {
-                                        toggleFollowingProgress(true, user.id);
-                                        usersAPI
-                                            .followUser(user.id)
-                                            .then((data) => {
-                                                if (data.resultCode === 0) {
-                                                    follow(user.id);
-                                                }
-                                                toggleFollowingProgress(
-                                                    false,
-                                                    user.id
-                                                );
-                                            });
-                                    }}
+                                    onClick={() => followUser(user.id)}
                                 >
                                     follow
                                 </button>

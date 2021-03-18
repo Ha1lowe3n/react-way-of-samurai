@@ -137,4 +137,28 @@ export const getUsers = (currentPage, pageSize) => (dispatch) => {
     });
 };
 
+export const followUser = (userId) => (dispatch) => {
+    dispatch(toggleFollowingProgress(true, userId));
+
+    usersAPI.followUser(userId).then((data) => {
+        if (data.resultCode === 0) {
+            dispatch(follow(userId));
+        }
+
+        dispatch(toggleFollowingProgress(false, userId));
+    });
+};
+
+export const unfollowUser = (userId) => (dispatch) => {
+    dispatch(toggleFollowingProgress(true, userId));
+
+    usersAPI.unfollowUser(userId).then((data) => {
+        if (data.resultCode === 0) {
+            dispatch(follow(userId));
+        }
+
+        dispatch(toggleFollowingProgress(false, userId));
+    });
+};
+
 export default users;
