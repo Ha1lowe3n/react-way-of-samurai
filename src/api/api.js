@@ -9,22 +9,32 @@ const instance = axios.create({
     },
 });
 
-// users
+// Users, UsersContainer
 export const usersAPI = {
-    // получаем пользователей
+    // получаем пользователей -> UserContainer
     getUsers: (currentPage, pageSize) => {
         return instance
             .get(`users?page=${currentPage}&count=${pageSize}`)
             .then((res) => res.data);
     },
 
+    // подписываемся -> User
     unfollowUser: (userId) => {
         return instance.delete(`follow/${userId}`).then((res) => res.data);
     },
 
+    // отписываемся -> User
     followUser: (userId) => {
         return instance.post(`follow/${userId}`).then((res) => res.data);
     },
+
+    // profile
+    // получаем иноформацию о пользователе на страницу профиля -> ProfileContainer
+    getProfile: (userId) => instance.get(`profile/${userId}`),
 };
 
-// profile
+// HeaderContainer
+export const authAPI = {
+    // авторизация
+    me: () => instance.get(`auth/me`),
+};
