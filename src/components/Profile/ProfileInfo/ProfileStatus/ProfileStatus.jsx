@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./ProfileStatus.module.scss";
 
-function ProfileStatus({ status }) {
+function ProfileStatus({ status, updateStatus }) {
     const [editMode, setEditMode] = React.useState(false);
     const [textStatus, setTextStatus] = React.useState("Hello friends");
 
@@ -42,9 +42,9 @@ function ProfileStatus({ status }) {
             ) : (
                 <div>
                     <input
-                        onBlur={toggleEditMode}
-                        value={textStatus}
                         autoFocus={true}
+                        value={textStatus}
+                        onBlur={toggleEditMode}
                         onChange={changeTextStatus}
                         onKeyPress={onKeyPress}
                     />

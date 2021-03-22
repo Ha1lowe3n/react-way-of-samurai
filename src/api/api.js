@@ -9,32 +9,35 @@ const instance = axios.create({
     },
 });
 
-// Users, UsersContainer
 export const usersAPI = {
     // получаем пользователей -> UserContainer
-    getUsers: (currentPage, pageSize) => {
-        return instance
+    getUsers: (currentPage, pageSize) =>
+        instance
             .get(`users?page=${currentPage}&count=${pageSize}`)
-            .then((res) => res.data);
-    },
+            .then((res) => res.data),
 
     // подписываемся -> User
-    unfollowUser: (userId) => {
-        return instance.delete(`follow/${userId}`).then((res) => res.data);
-    },
+    unfollowUser: (userId) =>
+        instance.delete(`follow/${userId}`).then((res) => res.data),
 
     // отписываемся -> User
-    followUser: (userId) => {
-        return instance.post(`follow/${userId}`).then((res) => res.data);
-    },
-
-    // profile
-    // получаем иноформацию о пользователе на страницу профиля -> ProfileContainer
-    getProfile: (userId) => instance.get(`profile/${userId}`),
+    followUser: (userId) =>
+        instance.post(`follow/${userId}`).then((res) => res.data),
 };
 
-// HeaderContainer
+export const profileAPI = {
+    // получаем иноформацию о пользователе на страницу профиля -> ProfileContainer
+    getProfile: (userId) =>
+        instance.get(`profile/${userId}`).then((res) => res.data),
+
+    // получаем статус пользователя ->
+    getStatus: (userId) => instance.get(`profile/status/${userId}`),
+
+    // обновляем статус ->
+    updateStatus: (status) => instance.put(`profile/status`, { status }),
+};
+
 export const authAPI = {
-    // авторизация
+    // авторизация -> HeaderContainer
     me: () => instance.get(`auth/me`),
 };

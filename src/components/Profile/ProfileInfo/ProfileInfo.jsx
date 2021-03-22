@@ -6,7 +6,7 @@ import classes from "./ProfileInfo.module.scss";
 import userPhoto from "../../../assets/images/avatarDefault.jpg";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
-function ProfileInfo({ profile }) {
+function ProfileInfo({ profile, status, updateStatus }) {
     return (
         <>
             {!profile ? (
@@ -27,7 +27,10 @@ function ProfileInfo({ profile }) {
                             }
                             alt={"user_photo"}
                         />
-                        <ProfileStatus status={"laal"} />
+                        <ProfileStatus
+                            status={status}
+                            updateStatus={updateStatus}
+                        />
                     </div>
                 </div>
             )}
