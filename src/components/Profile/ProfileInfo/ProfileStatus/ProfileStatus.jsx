@@ -2,90 +2,68 @@ import React from "react";
 
 import classes from "./ProfileStatus.module.scss";
 
-function ProfileStatus({ status, updateStatus }) {
-    const [editMode, setEditMode] = React.useState(false);
-    const [textStatus, setTextStatus] = React.useState("Hello friends");
-
-    // переключаем span и input
-    const toggleEditMode = () => {
-        setEditMode(!editMode);
+class ProfileStatus extends React.Component {
+    state = {
+        editMode: false,
+        status: this.props.status,
     };
 
-    const changeTextStatus = (e) => {
-        setTextStatus(e.currentTarget.value);
+    toggleEditMode = () => {
+        this.setState({
+            editMode: !this.state.editMode,
+        });
     };
 
-    const onKeyPress = (e) => {
+    updateTextStatus = () => {
+        this.toggleEditMode();
+        this.props.updateStatus(this.state.status);
+    };
+
+    onChangeStatus = (e) => {
+        this.setState({
+            status: e.currentTarget.value,
+        });
+    };
+
+    onKeyPress = (e) => {
         if (e.key === "Enter") {
-            setTextStatus(e.currentTarget.value);
-            toggleEditMode();
+            this.toggleEditMode();
+            this.updateTextStatus();
         }
     };
 
-    return (
-        <>
-            {!editMode ? (
-                textStatus === "" ? (
+    render() {
+        return (
+            <>
+                {!this.state.editMode ? (
                     <div>
-                        <span
-                            className={classes.set_status_message}
-                            onDoubleClick={toggleEditMode}
-                        >
-                            set a status message
-                        </span>
+                        {this.props.status === "" ? (
+                            <span
+                                className={classes.set_status_message}
+                                onDoubleClick={this.toggleEditMode}
+                            >
+                                set a status message
+                            </span>
+                        ) : (
+                            <span onDoubleClick={this.toggleEditMode}>
+                                {this.state.status}
+                            </span>
+                        )}
                     </div>
                 ) : (
                     <div>
-                        <span onDoubleClick={toggleEditMode}>{textStatus}</span>
+                        <input
+                            autoFocus={true}
+                            value={this.state.status}
+                            onBlur={this.updateTextStatus}
+                            onChange={this.onChangeStatus}
+                            onKeyPress={this.onKeyPress}
+                        />
                     </div>
-                )
-            ) : (
-                <div>
-                    <input
-                        autoFocus={true}
-                        value={textStatus}
-                        onBlur={toggleEditMode}
-                        onChange={changeTextStatus}
-                        onKeyPress={onKeyPress}
-                    />
-                </div>
-            )}
-        </>
-    );
+                )}
+            </>
+        );
+    }
 }
-
-// class ProfileStatus extends React.Component {
-//     state = {
-//         editMode: false,
-//     };
-//
-//     toggleEditMode = () => {
-//         this.setState({
-//             editMode: !this.state.editMode,
-//         });
-//     };
-//
-//     render() {
-//         return (
-//             <>
-//                 {!this.state.editMode ? (
-//                     <div>
-//                         <span onDoubleClick={this.toggleEditMode}>
-//                             {this.props.status}
-//                         </span>
-//                     </div>
-//                 ) : (
-//                     <div>
-//                         <input
-//                             onBlur={this.toggleEditMode}
-//                             value={this.props.status}
-//                             autoFocus={true}
-//                         />
-//                     </div>
-//                 )}
-//             </>
-//         );
-//     }
-// }
 
 export default ProfileStatus;
