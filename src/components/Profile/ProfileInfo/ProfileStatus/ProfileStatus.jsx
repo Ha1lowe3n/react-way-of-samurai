@@ -8,15 +8,25 @@ class ProfileStatus extends React.Component {
         status: this.props.status,
     };
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status,
+            });
+        }
+    }
+
     toggleEditMode = () => {
         this.setState({
             editMode: !this.state.editMode,
         });
     };
 
-    updateTextStatus = () => {
+    updateTextStatus = (e) => {
+        if (this.state.status !== e.currentTarget.value) {
+            this.props.updateStatus(this.state.status);
+        }
         this.toggleEditMode();
-        this.props.updateStatus(this.state.status);
     };
 
     onChangeStatus = (e) => {
@@ -28,7 +38,7 @@ class ProfileStatus extends React.Component {
     onKeyPress = (e) => {
         if (e.key === "Enter") {
             this.toggleEditMode();
-            this.updateTextStatus();
+            this.updateTextStatus(e);
         }
     };
 
@@ -37,16 +47,16 @@ class ProfileStatus extends React.Component {
             <>
                 {!this.state.editMode ? (
                     <div>
-                        {this.props.status === "" ? (
+                        {this.props.status ? (
+                            <span onDoubleClick={this.toggleEditMode}>
+                                {this.state.status}
+                            </span>
+                        ) : (
                             <span
                                 className={classes.set_status_message}
                                 onDoubleClick={this.toggleEditMode}
                             >
                                 set a status message
-                            </span>
-                        ) : (
-                            <span onDoubleClick={this.toggleEditMode}>
-                                {this.state.status}
                             </span>
                         )}
                     </div>
